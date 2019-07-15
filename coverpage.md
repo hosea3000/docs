@@ -8,5 +8,5 @@
 * Multiple themes
 * Not build static html files
 
-[GitHub](https://github.com/docsifyjs/docsify/)
-[Get Started](#quick-start)
+[GitHub](https://github.com/Syuusuke/docs)
+[Get Started](README.md)
