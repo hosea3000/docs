@@ -12,8 +12,8 @@
 * 接口
     * [Restful协议](interface/restful)
     * [如何生成一个可靠的cookie](interface/cookie)
-* [网络请求](docs/cors)
-* [解决过的问题](/docs/problem)
+* [网络请求](article/cors)
+* [解决过的问题](article/problem)
 
 
 
