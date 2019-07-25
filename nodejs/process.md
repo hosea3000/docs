@@ -292,3 +292,59 @@ worker process created, pid: 57615 ppid: 57611
 
 
 
+#### 这里有2个问题
+
+##### 问题一: 多个进程都需要监听同一个端口, 怎么实现的?
+只有主进程监听了端口, 其他进程只是开启了HTTP服务, 没有监听端口, 这完全是可以的
+##### 问题二: master进程怎么将用户请求传递给worker进程?
+当master进程接收到用户请求后会接受到一个`connection`事件, 这时候master进程会触发worker的`connection`事件, 
+
+推荐阅读:
+- [源码解析 Node.js 中 cluster 模块的主要功能实现](https://cnodejs.org/topic/56e84480833b7c8a0492e20c)
+
+
+### 守护进程
+守护进程运行在后台不受终端的影响. 守护的意思是说可以守护web服务进程不被中断, 如果被中断会再启动一个进程替代
+
+- 创建子进程
+- 在子进程中创建新会话（调用系统函数 setsid）
+- 改变子进程工作目录（如：“/” 或 “/usr/ 等）
+- 父进程终止
+
+```js
+// index.js
+const { spawn } = require('child_process');
+
+const startDaemon = () => {
+  const daemon = spawn('node', ['./daemon.js'], {
+    cwd: './',
+    detached: true,
+    stdio: 'ignore',
+  });
+  console.log('守护进程开启 父进程 pid: %s, 守护进程 pid: %s', process.pid, daemon.pid);
+  daemon.unref();
+};
+
+startDaemon();
+```
+
+开启一个子进程, 每10秒写入一条日志
+```js
+// daemon.js
+const fs = require('fs');
+const { Console } = require('console');
+
+// custom simple logger
+const logger = new Console(fs.createWriteStream('./stdout.log'), fs.createWriteStream('./stderr.log'));
+
+setInterval(() => {
+  logger.log('daemon pid: ', process.pid, ', ppid: ', process.ppid);
+}, 1000 * 10);
+
+```
+
+#### 测试结果:
+1. 主进程执行完会退出
+2. 子进程还在执行, 每10秒写入一条日志
+
+
