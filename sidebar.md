@@ -1,6 +1,7 @@
 * [首页](README.md)
 * Javascript
   * [手写promise](javascript/promise.md)
+  * [sort方法的用法](javascript/sort.md)
 * Node.js
    * [Node.js资料](/nodejs/index)
    * [模块机制](/nodejs/module)
