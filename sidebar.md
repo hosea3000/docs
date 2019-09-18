@@ -19,7 +19,7 @@
 * 数据库
    * [redis](database/redis)
    * [mongo](database/mongo)
-   * [mysql](database/index)
+   * [mysql](database/mysql)
    * [Sequelize](database/sequelize)
    
 * 接口
