@@ -125,3 +125,36 @@ package-lock.json是npm5的新特性，也不向前兼容，如果npm版本是4�
 1. package.json 包的更新策略不要太激进, 也不要太保守, 可以锁定前两位版本, 最后一位版本可变, 因为最后一位版本往往是修复BUG
 2. package-lock.json 应该加入版本仓库, 这样可以保证测试的依赖库和上线时候的依赖库一致
 
+
+
+## 全局 node_modules 权限问题
+
+first check who owns the directory
+```
+ls -la /usr/local/lib/node_modules
+```
+it is denying access because the node_module folder is owned by root
+
+```
+drwxr-xr-x   3 root    wheel  102 Jun 24 23:24 node_modules
+```
+so this needs to be changed by changing root to your user but first run command below to check your current user How do I get the name of the active user via the command line in OS X?
+```
+id -un
+```
+OR
+```
+whoami
+```
+then change owner
+```
+sudo chown -R [owner]:[owner] /usr/local/lib/node_modules
+```
+OR
+```
+sudo chown -R ownerName: /usr/local/lib/node_modules
+```
+OR
+```
+sudo chown -R $USER /usr/local/lib/node_modules
+```
