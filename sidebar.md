@@ -15,6 +15,7 @@
    * [进程和线程](/nodejs/process)
    * [面试题记录](/nodejs/interview)
    * [npm](/nodejs/npm)
+   * [nodemailer](/nodejs/nodemailer)
    
 * 数据库
    * [redis](database/redis)
