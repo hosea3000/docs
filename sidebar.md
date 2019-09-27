@@ -16,7 +16,8 @@
    * [面试题记录](/nodejs/interview)
    * [npm](/nodejs/npm)
    * [nodemailer](/nodejs/nodemailer)
-   
+   * [Egg](/nodejs/eggjs)
+
 * 数据库
    * [redis](database/redis)
    * [mongo](database/mongo)
