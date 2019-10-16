@@ -1,49 +1,63 @@
-## volume
+## Docker
 
-### 在容器中挂载一个image里面系统的目录
-```shell
-docker run -d --name nginx-volume -v /usr/share/nginx/html nginx
-docker inspect nginx-volume
+### 参考整理:
+- [关于 Docker 入门，这一篇就够了](https://mp.weixin.qq.com/s/yfxq9fvfmi1jFddYUQ3rMQ)
+- [一文零基础教你学会 Docker 入门到实践](https://mp.weixin.qq.com/s/S7ksqF8z4SYJvcG1DOupNA)
+- [Node.js 服务 Docker 容器化应用实践](https://mp.weixin.qq.com/s/vTD63u6F1hQYZcMkoSaj6g)
+
+### Docker 基础
+
+#### Dockerfile
+
+``` shell
+# Node.js 的 Alpine 版本
+FROM node:lts-alpine
+
+# 配置时区
+RUN apk --update add tzdata \
+    && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo "Asia/Shanghai" > /etc/timezone \
+    && apk del tzdata
+
+// 创建目录
+RUN mkdir -p /app
+
+// 设置工作目录
+WORKDIR /app
+
+// 先 COPY package.json 用于执行 npm i
+COPY ./package.json /app
+
+// 以生产环境的形式安装包
+RUN npm i --production --registry=https://registry.npm.taobao.org
+
+// COPY 代码
+COPY . /app
+
+// 暴露的端口
+EXPOSE 7001
+
+// 启动时执行的命令
+CMD EGG_SERVER_ENV=dev npm run docker
 ```
 
-### 在容器中挂载本地目录
+#### 创建 image
+
 ```shell
-docker run -p 80:80 -d -v $PWD/html:/usr/share/nginx/html nginx
+$ docker image build -t voting/dev ./
 ```
 
-### 创建一个只有数据的容器, 把这个容器当成volume挂载到其他容器
-
+#### 运行 image
 ```shell
-// 创建一个空的容器挂载本地目录
-docker create -v $PWD/data:/var/mydata --name data-container   ubuntu
-
-// 运行一个容器挂载之前的容器
-docker run -it  --volumes-from data-container ubuntu /bin/bash
-    cd /var/mydata // 在容器里面可以找到之前挂载的目录
-    touch whatever.txt // 在里面创建一个问题
-
-// 在本地目录也能看到这样一个文件
-cd data & ls // whatever.txt
-
+$ docker run -d -p 3000:3000 voting/dev     // 前面是本地端口号, 后面是images 暴露的端口号
 ```
 
 ### 进入容器
 ```shell
-docker exec -it service_develop /bin/ash
+$ docker exec -it service_develop /bin/ash
 ```
-
-### docker-compose 多容器
-
 
 ### 删除所有 none 的 images
 ```shell
-docker rmi $(docker images | awk '/^<none>/ { print $3 }')
-```
-
-```
-docker run -d --name=$CONTAINER_NAME --rm -p $RUN_PORT:$EXPOSE_PORT $IMAGE_NAME:$BRANCH_NAME
-```
-
-```
-docker run -d --name=saas-saas-api-logtest --rm -p 7111:7002 -v /home/gitlab-runner/logs/feature_v3_4_2:saas-api:/root/logs  saas/saas-api:feature_v3_4_2
+$ docker rmi $(docker images | awk '/^<none>/ { print $3 }')
 ```
