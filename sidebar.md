@@ -17,10 +17,12 @@
    * [npm](/nodejs/npm)
    * [nodemailer](/nodejs/nodemailer)
    * [Egg](/nodejs/eggjs)
+   * [Express](nodejs/express)
+* Mysql
+  * [什么是MySQL?](mysql/index) 
 * 数据库
    * [redis](database/redis)
    * [mongo](database/mongo)
-   * [mysql](database/mysql)
    * [Sequelize](database/sequelize)
 * 接口
     * [Restful协议](interface/restful)
