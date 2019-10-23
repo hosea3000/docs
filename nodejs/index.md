@@ -20,3 +20,39 @@
 
 I/O和CPU完全分离, 实现非阻塞I/O, 保证 Event loop 高效
 
+
+
+## async/await 异步中异常捕获的问题
+
+### 问题: 在如下场景中try/catch 是否能够成功捕获错误
+
+```js
+async function test() {
+  // throw new Error('Test Error');
+  return Promise.reject('Test Error');
+}
+
+async function handle(){
+  try{
+    // case 1:  能捕获
+    const res = await test();
+    return res;
+
+    // case 2: 能捕获
+    return await test();
+
+    // case 3: 不能捕获
+    return test();
+  }catch(err){
+    console.log('成功捕获 Error', err.toString());
+  }
+}
+
+handle().then().catch((err)=>{
+  console.log('未捕获到 Error', err.toString());
+});
+```
+
+### 结论: 在 try 中异步方法调用前有 await 就能捕获到错误
+
+
