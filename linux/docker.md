@@ -44,7 +44,7 @@ CMD EGG_SERVER_ENV=dev npm run docker
 #### 创建 image
 
 ```shell
-$ docker image build -t voting/dev ./
+$ docker image build -t doceker-compose-demo-api:dev ./
 ```
 
 #### 运行 image
@@ -61,3 +61,30 @@ $ docker exec -it service_develop /bin/ash
 ```shell
 $ docker rmi $(docker images | awk '/^<none>/ { print $3 }')
 ```
+
+### 查看未运行的容器
+```shell
+docker ps --filter "status=exited"
+
+docker ps -f "status=exited"
+```
+
+### 删除所有未运行的容器
+```shell
+#显示所有的容器，过滤出Exited状态的容器，取出这些容器的ID，
+sudo docker ps -a|grep Exited|awk '{print $1}'
+
+#查询所有的容器，过滤出Exited状态的容器，列出容器ID，删除这些容器
+sudo docker rm `docker ps -a|grep Exited|awk '{print $1}'`
+```
+
+
+
+
+
+### 常用程序的启动
+
+```powershell
+docker run -p 27017:27017 -v /home/<user>/data:/data/db
+```
+
