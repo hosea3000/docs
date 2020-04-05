@@ -6,7 +6,7 @@
   * [手写promise](javascript/promise)
   * [sort方法的用法](javascript/sort)
 * TypeScript
-	* [TypeScript 资料](typescript/index) 
+	* [TypeScript 资料](typescript/index)
 	* [引入第三方包](typescript/package)
 * Node.js
    * [Node.js资料](/nodejs/index)
@@ -19,7 +19,7 @@
    * [Egg](/nodejs/eggjs)
    * [Express](nodejs/express)
 * Mysql
-  * [什么是MySQL?](mysql/index) 
+  * [什么是MySQL?](mysql/index)
 * 数据库
    * [redis](database/redis)
    * [mongo](database/mongo)
@@ -36,6 +36,7 @@
 * [解决过的问题](article/problem)
 * [工具](tool/index)
     * [vscode](tool/vscode)
+    * [git](tool/git)
 
 
 
