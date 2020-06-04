@@ -23,13 +23,16 @@
 * 数据库
    * [redis](database/redis)
    * [mongo](database/mongo)
+      *[mongo用户以及权限](mongodb/auth)
    * [Sequelize](database/sequelize)
 * 接口
     * [Restful协议](interface/restful)
     * [如何生成一个可靠的cookie](interface/cookie)
 * Linux
     * [常用命令](linux/command)
-    * [Docker](linux/docker)
+* Docker
+  * [Docker](linux/docker)
+  * [Docker安装Mongodb](docker/mongodb)
 * 网络请求
     * [资料](network/index)
     * [跨域](network/cors)
