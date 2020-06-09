@@ -5,6 +5,9 @@
 * Javascript
   * [手写promise](javascript/promise)
   * [sort方法的用法](javascript/sort)
+  * [decorator装饰器](javascript/decorator)
+  * [操作符](javascript/operator)
+  * [数组](javascript/array)
 * TypeScript
 	* [TypeScript 资料](typescript/index)
 	* [引入第三方包](typescript/package)
@@ -23,7 +26,7 @@
 * 数据库
    * [redis](database/redis)
    * [mongo](database/mongo)
-      *[mongo用户以及权限](mongodb/auth)
+      * [mongo用户以及权限](mongo/auth)
    * [Sequelize](database/sequelize)
 * 接口
     * [Restful协议](interface/restful)
