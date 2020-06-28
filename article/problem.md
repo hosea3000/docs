@@ -63,7 +63,7 @@ require 引入文件如果没有也会抛出错误
 > 原因: V8内存没有及时释放, 多次计算内存累积, 内存被撑爆了
 
 -  每次都新开一个进程去做
--  使用强制内存回收, 
+-  使用强制内存回收,
 
     ```js
     // 代码中加入
@@ -72,3 +72,33 @@ require 引入文件如果没有也会抛出错误
     // 启动时加入参数
     node --expose-gc index.js
     ```
+
+### mongoose 的 update 默认只会更新一条数据
+  最好使用updateOne 和 updateMany
+
+### Object.assign() 会改变原有数据
+  > Object.assign() 会改变第一个参数，即使是调用方法里面也会(引用传递)
+
+
+  - 改变了第一个参数
+  ```js
+    const a = { a:1, b:2 }
+    Object.assign(a, { b:3, c:3 }) // { a: 1, b: 3, c: 3 }
+  ```
+
+
+  - 引用传递也会改变
+  ```js
+    const a = { a:1, b:2 }
+    function assign(obj) {
+      return Object.assign(a, { b:3, c:3 })
+    }
+    assign(a)
+    console.log(a)  // { a: 1, b: 3, c: 3 }
+  ```
+
+  - !建议写法
+  ```js
+    Object.assign({}, a, { b:3, c:3 })
+     console.log(a)  // { a:1, b:2 }
+  ```
