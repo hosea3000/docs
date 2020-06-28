@@ -13,6 +13,7 @@
 	* [引入第三方包](typescript/package)
 * Node.js
    * [Node.js资料](/nodejs/index)
+   * [异常捕获](nodejs/exception)
    * [模块机制](/nodejs/module)
    * [Web服务器](/nodejs/webServer)
    * [进程和线程](/nodejs/process)
