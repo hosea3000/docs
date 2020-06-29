@@ -105,3 +105,24 @@ require 引入文件如果没有也会抛出错误
 
   ### findOneAndUpdate 返回的是更新之前的数据
     如果需要更新之后的数据 option: `{ new: true }`
+
+### 捕获错误
+
+```js
+// 错误写法
+try {
+  return promisefunction()
+} catch(err) {
+  console.log(err)
+}
+
+// 正确写法
+try {
+  return await promisefunction()
+} catch(err) {
+  console.log(err)
+}
+```
+
+### TS 在不同文件中声明同名类会报错的问题
+默认情况下，当你在一个新的 TypeScript 文件中写下代码时，它处于全局命名空间中。要解决这个问题你应该在 TypeScript 文件的根级别位置含有 import 或者 export，它会在这个文件中创建一个本地的作用域。
