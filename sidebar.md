@@ -38,13 +38,16 @@
   * [Docker](linux/docker)
   * [Docker安装Mongodb](docker/mongodb)
 * 网络请求
-    * [资料](network/index)
-    * [跨域](network/cors)
+  * [资料](network/index)
+  * [跨域](network/cors)
 * [解决过的问题](article/problem)
 * [工具](tool/index)
-    * [vscode](tool/vscode)
-    * [git](tool/git)
-
+  * [vscode](tool/vscode)
+  * [git](tool/git)
+* [设计模式](/design-patterns/index)
+  * [简单工厂模式](/design-patterns/createPatterns/simple-factory)
+  * [工厂方法模式](/design-patterns/createPatterns/factory-method)
+  * [抽象工厂模式](/design-patterns/createPatterns/abstract-factory)
 
 
 
