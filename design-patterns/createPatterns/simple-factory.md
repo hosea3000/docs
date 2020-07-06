@@ -1,12 +1,12 @@
-
 ### 简单工厂模式
+
 > 又叫静态方法模式(因为工厂类定义了一个静态方法)
 
-* 特点：
+- 特点：
   - 工厂类用静态方法实现产品的创建
-* 优点：
+- 优点：
   - 将创建实例与使用实例分开，使用者不必关心类对象如何创建，实现了解耦
-* 缺点：
+- 缺点：
   - 新增产品需要修改工厂类
 
 ```js
@@ -38,5 +38,3 @@ class SimpleFactory {
 const pro: Product = SimpleFactory.createProduct('A')
 pro.useFunction()
 ```
-
-

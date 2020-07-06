@@ -1,23 +1,26 @@
-### 通过brew安装 Nginx
+### 通过 brew 安装 Nginx
 
 终端执行：
+
 - brew search nginx
 - brew install nginx
 
 安装完以后，可以在终端输出的信息里看到一些配置路径：
+
 - /usr/local/etc/nginx/nginx.conf （配置文件路径）
 - /usr/local/var/www （服务器默认路径）
 - /usr/local/Cellar/nginx/1.6.2 （貌似是安装路径）
 
-查看nginx版本
+查看 nginx 版本
+
 - nginx -v
 
 启动关闭 nginx 的两种方式
+
 - nginx -s start/stop
 - sudo brew services start/stop nginx
 
-
-### Nginx配置文件nginx.conf中文详解
+### Nginx 配置文件 nginx.conf 中文详解
 
 ```config
 ######Nginx配置文件nginx.conf中文详解#####
@@ -27,7 +30,7 @@ user www www;
 
 #nginx进程数，建议设置为等于CPU总核心数。
 worker_processes 8;
- 
+
 #全局错误日志定义类型，[ debug | info | notice | warn | error | crit ]
 error_log /usr/local/nginx/logs/error.log info;
 
@@ -81,13 +84,13 @@ events
     #open_file_cache指令中的inactive参数时间内文件的最少使用次数，如果超过这个数字，文件描述符一直是在缓存中打开的，如上例，如果有一个文件在inactive时间内一次没被使用，它将被移除。
     #语法:open_file_cache_min_uses number 默认值:open_file_cache_min_uses 1 使用字段:http, server, location  这个指令指定了在open_file_cache指令无效的参数中一定的时间范围内可以使用的最小文件数,如果使用更大的值,文件描述符在cache中总是打开状态.
     open_file_cache_min_uses 1;
-    
+
     #语法:open_file_cache_errors on | off 默认值:open_file_cache_errors off 使用字段:http, server, location 这个指令指定是否在搜索一个文件时记录cache错误.
     open_file_cache_errors on;
 }
- 
- 
- 
+
+
+
 #设定http服务器，利用它的反向代理功能提供负载均衡支持
 http
 {
@@ -122,7 +125,7 @@ http
 
     #此选项允许或禁止使用socke的TCP_CORK的选项，此选项仅在使用sendfile的时候使用
     tcp_nopush on;
-     
+
     tcp_nodelay on;
 
     #长连接超时时间，单位是秒
@@ -153,7 +156,7 @@ http
 
     #负载均衡配置
     upstream jh.w3cschool.cn {
-     
+
         #upstream的负载均衡，weight是权重，可以根据机器配置定义权重。weigth参数表示权值，权值越高被分配到的几率越大。
         server 192.168.80.121:80 weight=3;
         server 192.168.80.122:80 weight=2;
@@ -216,9 +219,9 @@ http
         #client_body_temp_path设置记录文件的目录 可以设置最多3层目录
         #location对URL进行匹配.可以进行重定向或者进行新的代理 负载均衡
     }
-     
-     
-     
+
+
+
     #虚拟主机的配置
     server
     {
@@ -237,19 +240,19 @@ http
             fastcgi_index index.php;
             include fastcgi.conf;
         }
-         
+
         #图片缓存时间设置
         location ~ .*.(gif|jpg|jpeg|png|bmp|swf)$
         {
             expires 10d;
         }
-         
+
         #JS和CSS缓存时间设置
         location ~ .*.(js|css)?$
         {
             expires 1h;
         }
-         
+
         #日志格式设定
         #$remote_addr与$http_x_forwarded_for用以记录客户端的ip地址；
         #$remote_user：用来记录客户端用户名称；
@@ -263,20 +266,20 @@ http
         log_format access '$remote_addr - $remote_user [$time_local] "$request" '
         '$status $body_bytes_sent "$http_referer" '
         '"$http_user_agent" $http_x_forwarded_for';
-         
+
         #定义本虚拟主机的访问日志
         access_log  /usr/local/nginx/logs/host.access.log  main;
         access_log  /usr/local/nginx/logs/host.access.404.log  log404;
-         
+
         #对 "/" 启用反向代理
         location / {
             proxy_pass http://127.0.0.1:88;
             proxy_redirect off;
             proxy_set_header X-Real-IP $remote_addr;
-             
+
             #后端的Web服务器可以通过X-Forwarded-For获取用户真实IP
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-             
+
             #以下是一些反向代理的配置，可选。
             proxy_set_header Host $host;
 
@@ -318,8 +321,8 @@ http
             #设定缓存文件夹大小，大于这个值，将从upstream服务器传
             proxy_temp_file_write_size 64k;
         }
-         
-         
+
+
         #设定查看Nginx状态的地址
         location /NginxStatus {
             stub_status on;
@@ -328,7 +331,7 @@ http
             auth_basic_user_file confpasswd;
             #htpasswd文件的内容可以用apache提供的htpasswd工具来产生。
         }
-         
+
         #本地动静分离反向代理配置
         #所有jsp的页面均交由tomcat或resin处理
         location ~ .(jsp|jspx|do)?$ {
@@ -337,14 +340,14 @@ http
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_pass http://127.0.0.1:8080;
         }
-         
+
         #所有静态文件由nginx直接读取不经过tomcat或resin
         location ~ .*.(htm|html|gif|jpg|jpeg|png|bmp|swf|ioc|rar|zip|txt|flv|mid|doc|ppt|
         pdf|xls|mp3|wma)$
         {
-            expires 15d; 
+            expires 15d;
         }
-         
+
         location ~ .*.(js|css)?$
         {
             expires 1h;
@@ -357,6 +360,7 @@ http
 ## nginx 常用配置
 
 ### 负载均衡配置
+
 ```
 在http里：
 upstream backend {
@@ -370,6 +374,7 @@ location / {
 ```
 
 ### 端口转发配置
+
 ```
 在server里：
 server{
@@ -387,6 +392,7 @@ server{
 ```
 
 ### 路由重写(比如将指定的路由转发到不同的服务器)
+
 ```
 #对 "/asp" 启用反向代理
 location /asp {
@@ -406,33 +412,41 @@ location /auth {
 ```
 
 ### 查看负载均衡状态
-nginx提供了默认的模块可以查看负载均衡的统计信息等，只需要在某个server里面添加：
+
+nginx 提供了默认的模块可以查看负载均衡的统计信息等，只需要在某个 server 里面添加：
+
 ```
-location /nginx {    
-    stub_status on;  
-    access_log   on;  
+location /nginx {
+    stub_status on;
+    access_log   on;
     # allow all; (不设置访问用户名或者密码)
     # allow 127.0.0.1; (ip白名单)
-    auth_basic   "NginxStatus";  
-    auth_basic_user_file   /etc/nginx/htpasswd;  
+    auth_basic   "NginxStatus";
+    auth_basic_user_file   /etc/nginx/htpasswd;
 }
 ```
-其中htpasswd是保存用户名和密码的文件，可以自定义位置，每一行一个用户username:password这样子保存的，使用crypt3(BASE64)加密，可以用一个PHP文件来生成
+
+其中 htpasswd 是保存用户名和密码的文件，可以自定义位置，每一行一个用户 username:password 这样子保存的，使用 crypt3(BASE64)加密，可以用一个 PHP 文件来生成
+
 ```
 $password = 'hehe';
 $password = crypt($password, base64_encode($password));
 echo $password;
 ```
+
 最后访问 http://...../nginx 即可看到如下的负载均衡信息：
+
 ```
 Active connections: 1
 server accepts handled requests
  2 2 37
 Reading: 0 Writing: 1 Waiting: 0
 ```
-nginx status详解
+
+nginx status 详解
+
 - active connections – 活跃的连接数量
-- server accepts handled requests — 总共处理了11989个连接 , 成功创建11989次握手, 总共处理了11991个请求
+- server accepts handled requests — 总共处理了 11989 个连接 , 成功创建 11989 次握手, 总共处理了 11991 个请求
 - reading — 读取客户端的连接数.
 - writing — 响应数据到客户端的数量
 - waiting — 开启 keep-alive 的情况下,这个值等于 active – (reading+writing), 意思就是 Nginx 已经处理完正在等候下一次请求指令的驻留连接.

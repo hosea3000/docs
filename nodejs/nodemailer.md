@@ -1,28 +1,24 @@
-## Node.js使用Nodemailer发送邮件
+## Node.js 使用 Nodemailer 发送邮件
 
+## Nodemailer 简介
 
-
-## Nodemailer简介
-
-Nodemailer是一个简单易用的Node.js邮件发送组件
+Nodemailer 是一个简单易用的 Node.js 邮件发送组件
 
 官网地址：[https://nodemailer.com](https://nodemailer.com/)
 
-GitHub地址：https://github.com/nodemailer/nodemailer
+GitHub 地址：https://github.com/nodemailer/nodemailer
 
-Nodemailer的主要特点包括：
+Nodemailer 的主要特点包括：
 
-- 支持Unicode编码
-- 支持Window系统环境
-- 支持HTML内容和普通文本内容
+- 支持 Unicode 编码
+- 支持 Window 系统环境
+- 支持 HTML 内容和普通文本内容
 - 支持附件(传送大附件)
-- 支持HTML内容中嵌入图片
-- 支持SSL/STARTTLS安全的邮件发送
-- 支持内置的transport方法和其他插件实现的transport方法
+- 支持 HTML 内容中嵌入图片
+- 支持 SSL/STARTTLS 安全的邮件发送
+- 支持内置的 transport 方法和其他插件实现的 transport 方法
 - 支持自定义插件处理消息
-- 支持XOAUTH2登录验证
-
-
+- 支持 XOAUTH2 登录验证
 
 ## 安装使用
 
@@ -31,8 +27,6 @@ Nodemailer的主要特点包括：
 ```
 npm install nodemailer --save
 ```
-
-
 
 ```js
 'use strict';
@@ -48,7 +42,7 @@ let transporter = nodemailer.createTransport({
     user: 'xxxxxx@qq.com',
     // 这里密码不是qq密码，是你设置的smtp授权码
     pass: 'xxxxxx',
-  }
+  },
 });
 
 let mailOptions = {
@@ -57,7 +51,7 @@ let mailOptions = {
   subject: 'Hello', // Subject line
   // 发送text或者html格式
   // text: 'Hello world?', // plain text body
-  html: '<b>Hello world?</b>' // html body
+  html: '<b>Hello world?</b>', // html body
 };
 
 // send mail with defined transport object
@@ -69,4 +63,3 @@ transporter.sendMail(mailOptions, (error, info) => {
   // Message sent: <04ec7731-cc68-1ef6-303c-61b0f796b78f@qq.com>
 });
 ```
-

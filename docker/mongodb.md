@@ -1,12 +1,12 @@
-### docker 安装mongodb
+### docker 安装 mongodb
 
 #### 基本思路
+
 我们将使用官方的 mongo:3.4 镜像（image），并将 27017 端口映射到主机端口，同时利用 Docker Volume 将数据库文件保存在主机上而非容器（container）中。
 
 通过端口映射，可以直接连接主机的 27017 端口。比如如果你在使用一些 GUI 管理工具，不会有任何影响。
 
 通过 Volume 将文件保存在主机，与容器分离，数据的使用与容器无关，所有针对数据的操作（比如备份、恢复）都不受影响。
-
 
 #### 运行 mongo
 
@@ -48,6 +48,5 @@ Successfully added user: {
 ```
 $ docker exec -it <YOUR-NAME> mongo -u <USER> -p <PASSWORD> --authenticationDatabase admin
 ```
-
 
 现在我们就可以像本地安装的 mong 一样操作了。如果误删了数据库管理员，可以停掉正在运行的库，然后去掉 —auth 重新运行一个新库，登录进去新建用户即可。
