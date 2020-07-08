@@ -1,9 +1,8 @@
 - [首页](README.md)
-  - [编程语言的类型](article/language)
+  - [重要问题](article/language)
   - [布隆过滤器](article/bloom-filter)
-  - [学习](article/study)
 - [踩过的坑](article/problem)
-- Javascript
+- JavaScript
   - [手写 promise](javascript/promise)
   - [sort 方法的用法](javascript/sort)
   - [decorator 装饰器](javascript/decorator)
@@ -12,8 +11,7 @@
 - TypeScript
   - [TypeScript 资料](typescript/index)
   - [引入第三方包](typescript/package)
-- Node.js
-  - [Node.js 资料](/nodejs/index)
+- [Node.js](/nodejs/index)
   - [Node.js 版本](/nodejs/version)
   - [异常捕获](nodejs/exception)
   - [模块机制](/nodejs/module)
@@ -32,11 +30,10 @@
   - [mongo](database/mongo)
   - [mongo 用户以及权限](mongo/auth)
   - [Sequelize](database/sequelize)
-- Http
-  - [Restful 协议](interface/restful)
-  - [如何生成一个可靠的 cookie](interface/cookie)
-  - [资料](network/index)
-  - [跨域](network/cors)
+- [Http](http/index)
+  - [Restful 协议](http/restful)
+  - [如何生成一个可靠的 cookie](http/cookie)
+  - [跨域](http/cors)
 - Linux
   - [常用命令](linux/command)
 - Docker
