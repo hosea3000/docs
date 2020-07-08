@@ -10,7 +10,7 @@
 
 #### Dockerfile
 
-```shell
+```powershell
 # Node.js 的 Alpine 版本
 FROM node:lts-alpine
 
@@ -44,31 +44,31 @@ CMD EGG_SERVER_ENV=dev npm run docker
 
 #### 创建 image
 
-```shell
+```powershell
 $ docker image build -t doceker-compose-demo-api:dev ./
 ```
 
 #### 运行 image
 
-```shell
+```powershell
 $ docker run -d -p 3000:3000 voting/dev     // 前面是本地端口号, 后面是images 暴露的端口号
 ```
 
 ### 进入容器
 
-```shell
+```powershell
 $ docker exec -it service_develop /bin/ash
 ```
 
 ### 删除所有 none 的 images
 
-```shell
+```powershell
 $ docker rmi $(docker images | awk '/^<none>/ { print $3 }')
 ```
 
 ### 查看未运行的容器
 
-```shell
+```powershell
 docker ps --filter "status=exited"
 
 docker ps -f "status=exited"
@@ -76,7 +76,7 @@ docker ps -f "status=exited"
 
 ### 删除所有未运行的容器
 
-```shell
+```powershell
 #显示所有的容器，过滤出Exited状态的容器，取出这些容器的ID，
 sudo docker ps -a|grep Exited|awk '{print $1}'
 
@@ -88,4 +88,10 @@ sudo docker rm `docker ps -a|grep Exited|awk '{print $1}'`
 
 ```powershell
 docker run -p 27017:27017 -v /home/<user>/data:/data/db
+```
+
+### 启动 Redis 集群
+
+```powershell
+docker run -i -t -d --name redis-cluster-dev -p 6379:6379 -p 7000:7000 -p 7001:7001 -p 7002:7002 -p 7003:7003 -p 7004:7004 -p 7005:7005 -p 7006:7006 -p 7007:7007 grokzen/redis-cluster
 ```
