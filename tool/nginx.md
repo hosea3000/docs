@@ -1,20 +1,10 @@
-
-
 https://mp.weixin.qq.com/s/_CpypdR3VyP4K8hZ18IGNg
-
-
 
 Nginx 简介
 
-
-
 Nginx 是一个免费、开源、高性能、轻量级的 HTTP 和反向代理服务器，也是一个电子邮件（IMAP/POP3）代理服务器，其特点是占有内存少，并发能力强。
 
-
-
 Nginx 由内核和一系列模块组成，内核提供 Web 服务的基本功能，如启用网络协议，创建运行环境，接收和分配客户端请求，处理模块之间的交互。
-
-
 
 Nginx 的各种功能和操作都由模块来实现。Nginx 的模块从结构上分为：
 
@@ -22,19 +12,11 @@ Nginx 的各种功能和操作都由模块来实现。Nginx 的模块从结构�
 - **基础模块：**HTTP Access 模块、HTTP FastCGI 模块、HTTP Proxy 模块和 HTTP Rewrite 模块。
 - **第三方模块：**HTTP Upstream Request Hash 模块、Notice 模块和 HTTP Access Key 模块及用户自己开发的模块。
 
-
-
 这样的设计使 Nginx 方便开发和扩展，也正因此才使得 Nginx 功能如此强大。
-
-
 
 Nginx 的模块默认编译进 Nginx 中，如果需要增加或删除模块，需要重新编译 Nginx，这一点不如 Apache 的动态加载模块方便。
 
-
-
 如果有需要动态加载模块，可以使用由淘宝网发起的 Web 服务器 Tengine，在 Nginx 的基础上增加了很多高级特性，完全兼容 Nginx，已被国内很多网站采用。
-
-
 
 Nginx 有很多扩展版本：
 
@@ -42,15 +24,9 @@ Nginx 有很多扩展版本：
 - **商业版 NGINX Plus**
 - **淘宝网发起的 Web 服务器 Tengine**
 - **基于 Nginx 和 Lua 的 Web 平台 OpenResty**
-- 
-
-
-
-
+-
 
 **Nginx 作为 Web 服务器**
-
-
 
 Web 服务器也称为 WWW（World Wide Web）服务器，主要功能是提供网上信息浏览服务，常常以 B/S（Browser/Server）方式提供服务：
 
@@ -58,93 +34,49 @@ Web 服务器也称为 WWW（World Wide Web）服务器，主要功能是提供�
 - **HTML 文档格式。**
 - **浏览器统一资源定位器(URL)。**
 
-
-
-
-
 Nginx 可以作为静态页面的 Web 服务器，同时还支持 CGI 协议的动态语言，比如 Perl、PHP 等，但是不支持 Java。
 
-
-
 Java 程序一般都通过与 Tomcat 配合完成。作为一名 Java 程序员，肯定要理解下 Nginx 和 Tomcat 的区别了。
-
-
 
 Nginx、Apache 和 Tomcat：
 
 - **Nginx：**由俄罗斯程序员 Igor Sysoev 所开发的轻量级、高并发 HTTP 服务器。
 
-  
-
-- **Apache HTTP Server Project：**一个 Apache 基金会下的 HTTP 服务项目，和 Nginx 功能类似。
-
-  
+* **Apache HTTP Server Project：**一个 Apache 基金会下的 HTTP 服务项目，和 Nginx 功能类似。
 
 - **Apache Tomcat：**是 Apache 基金会下的另外一个项目，是一个 Application Server。
 
   更准确的说是一个 Servlet 应用容器，与 Apache HTTP Server 和 Nginx 相比，Tomcat 能够动态的生成资源并返回到客户端。
 
-
-
 Apache HTTP Server 和 Nginx 本身不支持生成动态页面，但它们可以通过其他模块来支持（例如通过 Shell、PHP、Python 脚本程序来动态生成内容）。
-
-
 
 一个 HTTP Server 关心的是 HTTP 协议层面的传输和访问控制，所以在 Apache/Nginx 上你可以看到代理、负载均衡等功能。
 
-
-
 客户端通过 HTTP Server 访问服务器上存储的资源（HTML 文件、图片文件等等）。
-
-
 
 通过 CGI 技术，也可以将处理过的内容通过 HTTP Server 分发，但是一个 HTTP Server 始终只是把服务器上的文件如实的通过 HTTP 协议传输给客户端。
 
-
-
 而应用服务器，则是一个应用执行的容器。它首先需要支持开发语言的运行（对于 Tomcat 来说，就是 Java），保证应用能够在应用服务器上正常运行。
-
-
 
 其次，需要支持应用相关的规范，例如类库、安全方面的特性。对于 Tomcat 来说，就是需要提供 JSP/Sevlet 运行需要的标准类库、Interface 等。
 
-
-
 为了方便，应用服务器往往也会集成 HTTP Server 的功能，但是不如专业的 HTTP Server 那么强大。
-
-
 
 所以应用服务器往往是运行在 HTTP Server 的背后，执行应用，将动态的内容转化为静态的内容之后，通过 HTTP Server 分发到客户端。
 
-
-
-
-
 **正向代理**
 
-
-
 **正向代理：**如果把局域网外的 Internet 想象成一个巨大的资源库，则局域网中的客户端要访问 Internet，则需要通过代理服务器来访问，这种代理服务就称为正向代理。
-
-
 
 正向代理“代理”的是客户端。比如你想去 Google 看个“动作片”，可国内不允许呀，就需要找翻墙代理，这个就是所谓的“正向代理”。
 
 ![img](https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQrG5FiadmTibsRtcjWfbrsQrJWia2ib0mrUZt3CqUxicxIwTGGVnUUf1jklGL1I2Tjeg5QJhWRt9Z2Rkgw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
-
-
 **反向代理与负载均衡**
-
-
 
 反向代理正好与正向代理相反，反向代理是指以代理服务器来接收 Internet 上的连接请求，然后将请求转发到内部网络上的服务器，并将服务器上得到的结果返回给客户端。
 
-
-
 此时代理服务器对外表现就是一个服务器，客户端对代理是无感知的。反向代理“代理”的是服务端。
-
-
 
 再比如，你想本本分分的在“优酷”上看个“爱情片”，youku.com 会把你的请求分发到存放片片的那台机器上，这个就是所谓的“反向代理”。
 
@@ -157,78 +89,56 @@ Apache HTTP Server 和 Nginx 本身不支持生成动态页面，但它们可以
 - **通过缓存静态资源，加速 Web 请求**
 - **实现负载均衡**
 
-
-
 #### **负载均衡：**TODO: 留一个负载均衡详细介绍传送门。
 
-####  
+####
 
-#### **地址重定向：**Nginx 的 Rewrite 主要的功能就是实现 URL 重写，比如输入 360.com  跳转到了 360.cn，baidu.cn 跳转到了 baidu.com。
-
-
-
-
+#### **地址重定向：**Nginx 的 Rewrite 主要的功能就是实现 URL 重写，比如输入 360.com 跳转到了 360.cn，baidu.cn 跳转到了 baidu.com。
 
 **动静分离**
 
-
-
 为了加快网站的解析速度，可以把动态页面和静态页面由不同的服务器来解析，加快解析速度，降低原来单个服务器的压力。
-
-
 
 这里指的就是让动态程序（Java、PHP）去访问应用服务器，让缓存、图片、JS、CSS 等去访问 Nginx。
 
-
-
 Nginx 安装
 
-
-
-①下载Nginx：
+① 下载 Nginx：
 
 ```
-wget http://nginx.org/download/nginx-1.16.1.tar.gz 
+wget http://nginx.org/download/nginx-1.16.1.tar.gz
 ```
 
-
-
-②安装需要编译的插件：
+② 安装需要编译的插件：
 
 - 用于编译 C、C++ 代码的 GCC。
 - 用 C 语言编写的正则表达式函数库 Pcre(使用 Rewrite 模块)。
 - 用于数据压缩的函式库的 Zlib。
 - 安全套接字层密码库 OpenSSL（启用 SSL 支持）。
 
-
-
 ```
-yum install gcc c++                                          
-yum install -y pcre pcre-devel                          
-yum install -y zlib zlib-devel                           
-yum install -y openssl openssl-devel   
+yum install gcc c++
+yum install -y pcre pcre-devel
+yum install -y zlib zlib-devel
+yum install -y openssl openssl-devel
 ```
 
-
-
-③解压、配置（Nginx 支持各种配置选项 ）、编译、安装 Nginx：
+③ 解压、配置（Nginx 支持各种配置选项 ）、编译、安装 Nginx：
 
 ```
 tar -zxvf nginx-1.15.tar.gz cd nginx-1.16.1
 cd nginx-1.16.1
 ./configure
-make && sudo make install 
+make && sudo make install
 ```
 
-
-
-④启动、重启、关闭：
+④ 启动、重启、关闭：
 
 ```
-cd /usr/local/nginx/ 
+cd /usr/local/nginx/
 cd sbin
 ./nginx
-#关闭命令 
+#关闭命令
 ./nginx -s stop
 #重启，热部署
 ./nginx -s reload
@@ -236,25 +146,19 @@ cd sbin
 ./nginx -t
 ```
 
-
-
 ![img](https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQrG5FiadmTibsRtcjWfbrsQrJdevTrH3Hme4sbZlN6gxlzqJt96X70tsJPgWbYicuptZJXb7IyUgZGqA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
-⑤验证（浏览器输入 IP）：
+⑤ 验证（浏览器输入 IP）：
 
 ![img](https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQrG5FiadmTibsRtcjWfbrsQrJy59ucwSFVcozUlRfYr48kzGFPWvYvfMUxuxCgVQSC9GhLnrwaxskNw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
 配置文件
-
-
 
 nginx.conf 配置文件主要分为三部分：
 
 - **全局块**
 - **Events 块**
 - **HTTPS 块**
-
-
 
 Nginx 配置语法：
 
@@ -263,36 +167,22 @@ Nginx 配置语法：
 - 指令块以大括号{}将多条指令组织在一起
 - include 语句允许组合多个配置文件以提高可维护性
 - 使用 # 添加注释
-- 使用 $ 定义变量
+- 使用 \$ 定义变量
 - 部分指令的参数支持正则表达式
-
-
-
-
 
 **全局块**
 
-
-
 全局配置部分用来配置对整个 Server 都有效的参数。主要会设置一些影响 Nginx 服务器整体运行的配置指令，包括配置运行 Nginx 服务器的用户（组）、允许生成的 Worker Process 数，进程 PID 存放路径、日志存放路径和类型以及配置文件的引入等。
-
-
 
 示例如下：
 
 ```
 user nobody;
 worker_processes  4;
-error_log  /data/nginx/logs/error.log  notice; 
+error_log  /data/nginx/logs/error.log  notice;
 ```
 
-
-
-
-
 **Events 块**
-
-
 
 Events 块涉及的指令主要影响 Nginx 服务器与用户的网络连接，常用的设置包括是否开启对多 Work Process 下的网络连接进行序列化，是否允许同时接收多个网络连接，选取哪种事件驱动模型来处理连接请求，每个 Word Process 可以同时支持的最大连接数等。
 
@@ -303,21 +193,11 @@ events {
 }
 ```
 
-
-
-
-
 **HTTP 块**
-
-
 
 这算是 Nginx 服务器配置中最频繁的部分，代理、缓存和日志定义等绝大多数功能和第三方模块的配置都在这里。 需要注意的是：HTTP 块也可以包括 HTTP 全局块、Server 块。
 
-
-
 ##### **①HTTP 全局块**
-
-
 
 HTTP 全局块配置的指令包括文件引入、MIME-TYPE 定义、日志自定义、连接超时时间、单链接请求数上限等。
 
@@ -329,27 +209,15 @@ http {
     keepalive_timeout  65;
 ```
 
-
-
 ##### **②Server 块**
-
-
 
 这块和虚拟主机有密切关系，虚拟主机从用户角度看，和一台独立的硬件主机是完全一样的，该技术的产生是为了节省互联网服务器硬件成本。
 
-
-
 每个 HTTP 块可以包括多个 Server 块，而每个 Server 块就相当于一个虚拟主机。
-
-
 
 而每个 Server 块也分为全局 Server 块，以及可以同时包含多个 Locaton 块。
 
-
-
-**全局 Server 块：**也被叫做“虚拟服务器”部分，它描述的是一组根据不同server_name指令逻辑分割的资源，这些虚拟服务器响应 HTTP 请求，因此都包含在 HTTP 部分。
-
-
+**全局 Server 块：**也被叫做“虚拟服务器”部分，它描述的是一组根据不同 server_name 指令逻辑分割的资源，这些虚拟服务器响应 HTTP 请求，因此都包含在 HTTP 部分。
 
 最常见的配置是本虚拟机主机的监听配置和本虚拟主机的名称或 IP 配置。
 
@@ -362,23 +230,13 @@ server {
   #access_log  logs/host.access.log  main;
 ```
 
-
-
 **Location 块：**一个 Server 块可以配置多个 Location 块。
-
-
 
 这块的主要作用是基于 Nginx 服务器接收到的请求字符串（例如 server_name/uri-string），对虚拟主机名称 （也可以是 IP 别名）之外的字符串（例如前面的 /uri-string）进行匹配，对特定的请求进行处理。
 
-
-
 地址定向、数据缓存和应答控制等功能，还有许多第三方模块的配置也在这里进行。
 
-
-
 **Location 指令说明：**该指令用于匹配 URL。
-
-
 
 语法如下：
 
@@ -391,19 +249,13 @@ location [ = | ~ | ~* | ^~] uri{}
 - **~\*：**该修饰符使用不区分大小写的正则表达式匹配。
 - **^~：**用于不含正则表达式的 URI 前，要求 Nginx 服务器找到标识 URI 和请求字符串匹配度最高的 Location 后，立即使用此 Location 处理请求，而不再使用 Location 块中的正则 URI 和请求字符串做匹配。
 
-
-
-?>Tip 注意：如果 URI 包含正则表达式，则必须要有 ~ 或者 ~* 标识。
-
-
+?>Tip 注意：如果 URI 包含正则表达式，则必须要有 ~ 或者 ~\* 标识。
 
 当一个请求进入时，URI 将会被检测匹配一个最佳的 Location：
 
 - 没有正则表达式的 Location 被作为最佳的匹配，独立于含有正则表达式的 Location 顺序。
 
-  
-
-- 在配置文件中按照查找顺序进行正则表达式匹配。在查找到第一个正则表达式匹配之后结束查找。由这个最佳的 Location 提供请求处理。
+* 在配置文件中按照查找顺序进行正则表达式匹配。在查找到第一个正则表达式匹配之后结束查找。由这个最佳的 Location 提供请求处理。
 
 ```
  location / {
@@ -425,16 +277,14 @@ location [ = | ~ | ~* | ^~] uri{}
   }
 ```
 
-
-
 #### nginx.conf 详细配置如下：
 
 ```
 #定义Nginx运行的用户和用户组
-user www www; 
+user www www;
 
 #nginx进程数，通常设置成和cpu的数量相等
-worker_processes 4; 
+worker_processes 4;
 
 #全局错误日志定义类型，[debug | info | notice | warn | error | crit]
 #error_log  /data/nginx/logs/error.log;
@@ -714,43 +564,25 @@ http{
 }
 ```
 
-
-
 Nginx 配置实例
-
-
-
-
 
 **反向代理 Demo 1**
 
-
-
 **实现效果：**使用 Nginx 反向代理，访问 test.com 直接跳转到自己的机器 127.0.0.1:8080
 
-
-
-①启动一个 Tomcat，浏览器地址栏输入 127.0.0.1:8080。
-
-
+① 启动一个 Tomcat，浏览器地址栏输入 127.0.0.1:8080。
 
 出现如下界面：
 
 ![img](https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQrG5FiadmTibsRtcjWfbrsQrJ8QwAnYhxmRScmvz14v6YlZxBNI3fDUEC8rDPzYHAF4Ekq9lEmPGCpw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
-②通过修改本地 Host 文件（C:\Windows\System32\drivers\etc），添加127.0.0.1 www.12345.com 将 www.12345.com 映射到自己的机器 IP 上。
+② 通过修改本地 Host 文件（C:\Windows\System32\drivers\etc），添加 127.0.0.1 www.12345.com 将 www.12345.com 映射到自己的机器 IP 上。
 
-
-
-③配置完成之后，我们便可以通过 www.test.com:8080 访问到第一步出现的 Tomcat 初始界面。
-
-
+③ 配置完成之后，我们便可以通过 www.test.com:8080 访问到第一步出现的 Tomcat 初始界面。
 
 那么如何只需要输入 www.12345.com 便可以跳转到 Tomcat 初始界面呢？便用到 Nginx 的反向代理。
 
-
-
-④修改 nginx.conf 配置文件，增加如下配置 proxy_pass：
+④ 修改 nginx.conf 配置文件，增加如下配置 proxy_pass：
 
 ```
     server {
@@ -763,38 +595,24 @@ Nginx 配置实例
         }
 ```
 
-
-
-⑤如上配置，我们监听 80 端口，访问域名为 www.12345.com，不加端口号时默认为 80 端口，故访问该域名时会跳转到 127.0.0.1:8080 路径上。
-
-
+⑤ 如上配置，我们监听 80 端口，访问域名为 www.12345.com，不加端口号时默认为 80 端口，故访问该域名时会跳转到 127.0.0.1:8080 路径上。
 
 在浏览器端输入 www.12345.com 结果如下：
 
 ![img](https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQrG5FiadmTibsRtcjWfbrsQrJV9MArrTWeNI5jTWc0Lf19U16y3DDoAH4bj4uz3JwDrrXfQrQicNUia9w/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
-
-
 **反向代理 Demo 2**
-
-
 
 实现效果：使用 Nginx 反向代理，根据访问的路径跳转到不同端口的服务中：
 
 - 访问 http://127.0.0.1/java/ 直接跳转到 127.0.0.1:8080
 - 访问 http://127.0.0.1/egg/ 直接跳转到 127.0.0.1:8081
 
-
-
-①在服务器上起两个 Tomcat，修改其中一个端口号为 8081。
-
-
+① 在服务器上起两个 Tomcat，修改其中一个端口号为 8081。
 
 在 tomcat/webapps/ 目录下各加两个文件夹，并随便写个 HTML 页面，我建的是 java/index.html 和 egg/index.html。
 
-
-
-②修改 nginx.conf，在 HTTP 块中添加 serve{}：
+② 修改 nginx.conf，在 HTTP 块中添加 serve{}：
 
 ```
 server {
@@ -811,47 +629,29 @@ server {
 }
 ```
 
-
-
-③重启 Nginx，验证效果：
+③ 重启 Nginx，验证效果：
 
 ![img](https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQrG5FiadmTibsRtcjWfbrsQrJlDf9ibsj3OKhG9js2AKbGYKPGH90E0l17NzAYnr2phTQ7kwPuibk6Tfw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
-
-
 **Nginx 配置：负载均衡**
-
-
 
 随着互联网信息的爆炸性增长，负载均衡（Load Balance）已经不再是一个很陌生的话题。
 
-
-
 顾名思义，负载均衡即是将负载分摊到不同的服务单元，既保证服务的可用性，又保证响应足够快，给用户很好的体验。
-
-
 
 快速增长的访问量和数据流量催生了各式各样的负载均衡产品，很多专业的负载均衡硬件提供了很好的功能，但却价格不菲。
 
-
-
 这使得负载均衡软件大受欢迎，Nginx 就是其中的一个，在 Linux 下有 Nginx、LVS、Haproxy 等等服务可以提供负载均衡服务。
 
-
-
-Nginx 的负载均衡是 Proxy 模块和 Upstream 模块搭配实现的。Upstream模块将会启用一个新的配置区段，在该区段定义了一组上游服务器。
-
-
+Nginx 的负载均衡是 Proxy 模块和 Upstream 模块搭配实现的。Upstream 模块将会启用一个新的配置区段，在该区段定义了一组上游服务器。
 
 **实现效果：配置负载均衡。**
 
-
-
-①同时启动两个 Tomcat（为了方便验证效果，修改 Tomcat 端口号的同时，顺便将 Tomcat 默认欢迎页面 apache-tomcat-9.0.29/webapps/ROOR 目录下的 index.jsp 修改下，看下 8081 欢迎页的“蛋蛋”没）：
+① 同时启动两个 Tomcat（为了方便验证效果，修改 Tomcat 端口号的同时，顺便将 Tomcat 默认欢迎页面 apache-tomcat-9.0.29/webapps/ROOR 目录下的 index.jsp 修改下，看下 8081 欢迎页的“蛋蛋”没）：
 
 ![img](https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQrG5FiadmTibsRtcjWfbrsQrJqKFndNxKPdkEDnwS9aGqR6GN61x0RHdTv7NcwByEcFUb51UPzxTWuQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
-②修改 nginx.conf：
+② 修改 nginx.conf：
 
 ```
 http {
@@ -868,99 +668,67 @@ http {
 }
 ```
 
-
-
-③重启 Nginx，验证效果（默认轮询的方式，每次打开新窗口，8080 和 8081 会交替出现，同一个窗口的话需要关闭浏览器缓存)。
-
-
+③ 重启 Nginx，验证效果（默认轮询的方式，每次打开新窗口，8080 和 8081 会交替出现，同一个窗口的话需要关闭浏览器缓存)。
 
 Nginx 分配策略：
 
 - 轮询（默认） 每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器 Down 掉，能自动剔除。
-- Weight 代表权重，默认为 1，权重越高被分配的客户端越多，指定轮询几率，Weight 和访问比率成正比，用于后端服务器性能不均的情况。 
-
-
+- Weight 代表权重，默认为 1，权重越高被分配的客户端越多，指定轮询几率，Weight 和访问比率成正比，用于后端服务器性能不均的情况。
 
 例如：
 
-
-
 ```
- upstream server_pool{ 
-    server 192.168.5.21 weight=10; 
-    server 192.168.5.22 weight=10; } 
+ upstream server_pool{
+    server 192.168.5.21 weight=10;
+    server 192.168.5.22 weight=10; }
 ```
 
-
-
-ip_hash 每个请求按访问 IP 的 Hash 结果分配，这样每个访客固定访问一个后端服务器，可以解决 Session 的问题。 
-
-
+ip_hash 每个请求按访问 IP 的 Hash 结果分配，这样每个访客固定访问一个后端服务器，可以解决 Session 的问题。
 
 例如：
 
 ```
 upstream server_pool{
-    ip_hash; server 192.168.5.21:80; 
-    server 192.168.5.22:80; 
-} 
+    ip_hash; server 192.168.5.21:80;
+    server 192.168.5.22:80;
+}
 ```
-
-
 
 Fair（第三方） 按后端服务器的响应时间来分配请求，响应时间短的优先分配。
 
 ```
-upstream server_pool{ 
+upstream server_pool{
     server 192.168.5.21:80;
     server 192.168.5.22:80; fair;
- } 
+ }
 ```
-
-
-
-
 
 **Nginx 配置：动静分离**
 
-
-
 Nginx 动静分离简单来说就是把动态跟静态请求分开，不能理解成只是单纯的把动态页面和静态页面物理分离。
-
-
 
 严格意义上说应该是动态请求跟静态请求分开，可以理解成使用 Nginx 处理静态页面，Tomcat 处理动态页面。
 
-
-
 动静分离从目前实现角度来讲大致分为两种：
 
-- 纯粹把静态文件独立成单独的域名，放在独立的服务器上，也是目前主流推崇的方案； 
-- 动态跟静态文件混合在一起发布，通过 Nginx 来分开。 
-
-
+- 纯粹把静态文件独立成单独的域名，放在独立的服务器上，也是目前主流推崇的方案；
+- 动态跟静态文件混合在一起发布，通过 Nginx 来分开。
 
 通过 Location 指定不同的后缀名实现不同的请求转发。通过 Expires 参数设置，可以使浏览器缓存过期时间，减少与服务器之前的请求和流量。
 
-
-
 **具体 Expires 定义：**是给一个资源设定一个过期时间，也就是说无需去服务端验证，直接通过浏览器自身确认是否过期即可， 所以不会产生额外的流量。
 
-
-
 此种方法非常适合不经常变动的资源（如果经常更新的文件， 不建议使用 Expires 来缓存）。
-
-
 
 我这里设置 3d，表示在这 3 天之内访问这个 URL，发送一个请求，比对服务器该文件最后更新时间没有变化，则不会从服务器抓取，返回状态码 304，如果有修改，则直接从服务器重新下载，返回状态码 200。
 
 ![img](https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQrG5FiadmTibsRtcjWfbrsQrJxYzSQESHatOulxde5IC2oPP6Hb7LSRPfY3icoGibDiaC3iceM3ichUXCJ8Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
-①服务器找个目录存放自己的静态文件：
+① 服务器找个目录存放自己的静态文件：
 
 ![img](https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQrG5FiadmTibsRtcjWfbrsQrJcD8s9e1XYLXGV4ibFA5Cia2IPicoia1yCDbKlW16OuVD3XunMfuq2XicXvQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
-②修改 nginx.conf：
+② 修改 nginx.conf：
 
 ```
     server {
@@ -975,27 +743,15 @@ Nginx 动静分离简单来说就是把动态跟静态请求分开，不能理�
         }
 ```
 
-
-
 ③./nginx -s reload，验证效果：
 
 ![img](https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQrG5FiadmTibsRtcjWfbrsQrJbxiblgEJLphUQO56vwdIGQfsd5vCnBcqkNH8qkwiaBZUyn1MiaGKuia9PA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
 添加监听端口、访问名字重点是添加 Location，最后检查 Nginx 配置是否正确即可，然后测试动静分离是否成功，只需要删除后端 Tomcat 服务器上的某个静态文件，查看是否能访问，如果可以访问说明静态资源 Nginx 直接返回了，不走后端 Tomcat 服务器。
 
-
-
-
-
 **Nginx 的 Rewrite**
 
-
-
-
-
 Rewrite 是 Nginx 服务器提供的一个重要的功能，它可以实现 URL 重写和重定向功能。
-
-
 
 场景如下：
 
@@ -1004,11 +760,7 @@ Rewrite 是 Nginx 服务器提供的一个重要的功能，它可以实现 URL 
 - 后台维护、流量转发等
 - 安全（动态界面进行伪装）
 
-
-
 该指令是通过正则表达式的使用来改变 URI。可以同时存在一个或多个指令。需要按照顺序依次对 URL 进行匹配和处理。
-
-
 
 该指令可以在 Server 块或 Location 块中配置，其基本语法结构如下：
 
@@ -1016,9 +768,7 @@ Rewrite 是 Nginx 服务器提供的一个重要的功能，它可以实现 URL 
 rewrite regex replacement [flag];
 ```
 
-
-
-①采用反向代理 Demo2 中的例子，修改 nginx.conf（只多加了一行 Rewrite）：
+① 采用反向代理 Demo2 中的例子，修改 nginx.conf（只多加了一行 Rewrite）：
 
 ```
 server {
@@ -1036,8 +786,6 @@ server {
 }
 ```
 
-
-
 ②./nginx -s reload，验证效果（输入 ip/java/ 被重定向到了 egg）：
 
 ![img](https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQrG5FiadmTibsRtcjWfbrsQrJwY2ly3libEKkLja8ar5QhSZqyRia8DTD3rB1ibwolGdPorn55nQ3EALdg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
@@ -1053,8 +801,6 @@ rewrite regex replacement [flag];
 - **replacement：**将 regex 正则匹配到的内容替换成 replacement。
 - **flag：**flag 标记。
 
-
-
 flag 有如下值：
 
 - **last：**本条规则匹配完成后，继续向下匹配新的 Location URI 规则。(不常用)
@@ -1066,21 +812,11 @@ flag 有如下值：
 rewrite ^/(.*) http://www.360.cn/$1 permanent;
 ```
 
-
-
-
-
 **Nginx 高可用**
-
-
 
 如果将 Web 服务器集群当做一个城池，那么负载均衡服务器就相当于城门。如果“城门”关闭了，与外界的通道就断了。
 
-
-
 如果只有一台 Nginx 负载服务器，当故障宕机的时候，就会导致整个网站无法访问。
-
-
 
 所以我们需要两台以上 Nginx 来实现故障转移和高可用：
 
@@ -1088,59 +824,31 @@ rewrite ^/(.*) http://www.360.cn/$1 permanent;
 
 #### 那么如何配置高可用？
 
-
-
-
-
-**①双机热备方案**
-
-
+**① 双机热备方案**
 
 这种方案是国内企业中最为普遍的一种高可用方案，双机热备其实就是指一台服务器在提供服务，另一台为某服务的备用状态，当一台服务器不可用另外一台就会顶替上去。
 
-
-
 Keepalived 是什么？Keepalived 软件起初是专为 LVS 负载均衡软件设计的，用来管理并监控 LVS 集群系统中各个服务节点的状态。
-
-
 
 后来又加入了可以实现高可用的 VRRP (Virtual Router Redundancy Protocol ，虚拟路由器冗余协议）功能。
 
-
-
 因此，Keepalived 除了能够管理 LVS 软件外，还可以作为其他服务（例如：Nginx、Haproxy、MySQL 等）的高可用解决方案软件。
 
-
-
-**②故障转移机制**
-
-
+**② 故障转移机制**
 
 Keepalived 高可用服务之间的故障切换转移，是通过 VRRP 来实现的。
 
+在 Keepalived 服务正常工作时，主 Master 节点会不断地向备节点发送（多播的方式）心跳消息，用以告诉备 Backup 节点自己还活着。
 
+当主 Master 节点发生故障时，就无法发送心跳消息，备节点也就因此无法继续检测到来自主 Master 节点的心跳了，于是调用自身的接管程序，接管主 Master 节点的 IP 资源及服务。
 
-在 Keepalived服务正常工作时，主 Master 节点会不断地向备节点发送（多播的方式）心跳消息，用以告诉备 Backup 节点自己还活着。
-
-
-
-当主 Master 节点发生故障时，就无法发送心跳消息，备节点也就因此无法继续检测到来自主  Master 节点的心跳了，于是调用自身的接管程序，接管主 Master 节点的 IP 资源及服务。
-
-
-
-而当主 Master节点恢复时，备 Backup 节点又会释放主节点故障时自身接管的 IP 资源及服务，恢复到原来的备用角色。
-
-
+而当主 Master 节点恢复时，备 Backup 节点又会释放主节点故障时自身接管的 IP 资源及服务，恢复到原来的备用角色。
 
 实现方法如下：
 
+① 准备两台安装 Nginx 和 Keepaliver(yum install keepalived -y)的服务器
 
-
-①准备两台安装 Nginx 和 Keepaliver(yum install keepalived -y)的服务器
-
-
-
-②修改两台服务器上的 /etc/keepalived/keepalived.conf
+② 修改两台服务器上的 /etc/keepalived/keepalived.conf
 
 ```
 #主机
@@ -1171,8 +879,6 @@ vrrp_instance VI_1 {
 }
 ```
 
-
-
 ```
 # 备机
 #检测脚本
@@ -1202,43 +908,29 @@ vrrp_instance VI_1 {
 }
 ```
 
-
-
-③新建检测脚本(chmod 775 check_nginx.sh)：
+③ 新建检测脚本(chmod 775 check_nginx.sh)：
 
 ```
 #!/bin/bash
 #检测nginx是否启动了
-A=`ps -C nginx --no-header |wc -l`        
-if [ $A -eq 0 ];then    #如果nginx没有启动就启动nginx                        
+A=`ps -C nginx --no-header |wc -l`
+if [ $A -eq 0 ];then    #如果nginx没有启动就启动nginx
       systemctl start nginx                #重启nginx
       if [ `ps -C nginx --no-header |wc -l` -eq 0 ];then    #nginx重启失败，则停掉keepalived服务，进行VIP转移
-              killall keepalived                    
+              killall keepalived
       fi
 fi
 ```
 
+④ 启动 Nginx 和 Keepalived（systemctl start keepalived.service）
 
-
-④启动 Nginx 和 Keepalived（systemctl start keepalived.service）
-
-
-
-⑤模拟 Nginx 故障（关闭主服务器 Nginx），验证，仍可以通过配置的虚拟 IP 访问，OK。
-
-
+⑤ 模拟 Nginx 故障（关闭主服务器 Nginx），验证，仍可以通过配置的虚拟 IP 访问，OK。
 
 Nginx 原理与优化参数配置
 
-
-
 Nginx 默认采用多进程工作方式，Nginx 启动后，会运行一个 Master 进程和多个 Worker 进程。
 
-
-
 其中 Master 充当整个进程组与用户的交互接口，同时对进程进行监护，管理 Worker 进程来实现重启服务、平滑升级、更换日志文件、配置文件实时生效等功能。
-
-
 
 Worker 用来处理基本的网络事件，Worker 之间是平等的，他们共同竞争来处理来自客户端的请求。
 
@@ -1249,48 +941,44 @@ Worker 用来处理基本的网络事件，Worker 之间是平等的，他们共
 - 可以使用 nginx-s reload 热部署。
 - 每个 Worker 是独立的进程，不需要加锁，省掉了锁带来的开销。采用独立的进程，可以让互相之间不会影响，一个进程退出后，其他进程还在工作，服务不会中断，Master 进程则很快启动新的 Worker 进程。
 
-####  
+####
 
 #### 需要设置多少个 Worker？Nginx 同 Redis 类似都采用了 IO 多路复用机制，每个 Worker 都是一个独立的进程，但每个进程里只有一个主线程，通过异步非阻塞的方式来处理请求，即使是成千上万个请求也不在话下。
 
-####  
+####
 
 #### 每个 Worker 的线程可以把一个 CPU 的性能发挥到极致。所以 Worker 数和服务器的 CPU 数相等是最为适宜的。设少了会浪费 CPU，设多了会造成 CPU 频繁切换上下文带来的损耗。
 
 ```
 #设置 worker 数量。
- worker_processes 4 
-#work 绑定 cpu(4 work 绑定 4cpu)。 
- worker_cpu_affinity 0001 0010 0100 1000 
-#work 绑定 cpu (4 work 绑定 8cpu 中的 4 个) 。 
+ worker_processes 4
+#work 绑定 cpu(4 work 绑定 4cpu)。
+ worker_cpu_affinity 0001 0010 0100 1000
+#work 绑定 cpu (4 work 绑定 8cpu 中的 4 个) 。
  worker_cpu_affinity 0000001 00000010 00000100 00001000
 ```
 
-
-
 #### **连接数 worker_connection：**这个值是表示每个 Worker 进程所能建立连接的最大值。
 
-####  
+####
 
-#### 所以，一个 Nginx 能建立的最大连接数，应该是 worker_connections*worker_processes。
+#### 所以，一个 Nginx 能建立的最大连接数，应该是 worker_connections\*worker_processes。
 
-####  
+####
 
-#### 当然，这里说的是最大连接数，对于 HTTP 请 求 本 地 资 源 来 说 ， 能 够 支 持 的 最 大 并 发 数 量 是 worker_connections*worker_processes，如果是支持 http1.1 的浏览器每次访问要占两个连接。
+#### 当然，这里说的是最大连接数，对于 HTTP 请 求 本 地 资 源 来 说 ， 能 够 支 持 的 最 大 并 发 数 量 是 worker_connections\*worker_processes，如果是支持 http1.1 的浏览器每次访问要占两个连接。
 
-####  
+####
 
-#### 所以普通的静态访问最大并发数是：worker_connections*worker_processes /2。
+#### 所以普通的静态访问最大并发数是：worker_connections\*worker_processes /2。
 
-####  
+####
 
-#### 而如果是 HTTP 作为反向代理来说，最大并发数量应该是 worker_connections*worker_processes/4。
+#### 而如果是 HTTP 作为反向代理来说，最大并发数量应该是 worker_connections\*worker_processes/4。
 
-####  
+####
 
 #### 因为作为反向代理服务器，每个并发会建立与客户端的连接和与后端服务的连接，会占用两个连接。
-
-
 
 #### Nginx 请求处理流程如下图：
 
@@ -1298,29 +986,21 @@ Worker 用来处理基本的网络事件，Worker 之间是平等的，他们共
 
 Nginx 模块开发
 
-
-
 由于 Nginx 的模块化特性，所以可以支持模块配置，也可以自定义模块，Nginx 的模块开发，程序员目前还不需要太深入。
-
-
 
 Nginx 模块分类如下图：
 
 ![img](https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQrG5FiadmTibsRtcjWfbrsQrJVzeicJpvc1gEPeoiclwEoWY5xn6M47BEsibzZlZAyPct44HtjGpuHoQUg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
-#### Nginx配置选项，解压 Nginx 后的配置操作示例：
+#### Nginx 配置选项，解压 Nginx 后的配置操作示例：
 
 ```
 ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-pcre  --with-http_ssl_module
 ```
 
-
-
 ![img](https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQqmQvfLduFSaglvw1eic7yCkUPRvicLYJ5mIMnk9gTMr1c5vvOSBkT9NjicX8icrm9zqBpsAqZcKVWv2w/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
 Nginx 面试题
-
-
 
 ①Nginx 功能，你们项目中用到的 Nginx？
 
@@ -1328,8 +1008,6 @@ Nginx 面试题
 - **实现负载均衡**
 - **做静态资源服务器**
 - **作为 HTTP Server**
-
-
 
 ②Nginx 常用命令有哪些？
 
@@ -1343,8 +1021,6 @@ Nginx 面试题
 显示帮助信息  ./sbin/nginx  -h
 ```
 
-
-
 ③Nginx 常用配置？
 
 ```
@@ -1353,69 +1029,33 @@ work_connections 65535; #每个进程的并发能力
 error_log  /data/nginx/logs/error.log;  #错误日志
 ```
 
-
-
 ④Nginx 是如何实现高并发的？
-
-
 
 Nginx 采用的是多进程（单线程）&多路 IO 复用模型，异步，非阻塞。
 
-
-
 一个主进程 Master，多个工作进程 Worker，每个工作进程可以处理多个请求 ，Master 进程主要负责收集、分发请求。
-
-
 
 每当一个请求过来时，Master 就拉起一个 Worker 进程负责处理这个请求。同时 Master 进程也负责监控 Woker 的状态，保证高可靠性。
 
-
-
 在 Nginx 中的 Work 进程中，为了应对高并发场景，采取了 Reactor 模型（也就是 I/O 多路复用，NIO）。
-
-
 
 **I/O 多路复用模型：**在 I/O 多路复用模型中，最重要的系统调用函数就是 Select（其他的还有 epoll 等）。
 
-
-
 该方法能够同时监控多个文件描述符的可读可写情况（每一个网络连接其实都对应一个文件描述符），当其中的某些文件描述符可读或者可写时，Select 方法就会返回可读以及可写的文件描述符个数。
-
-
 
 Nginx Work 进程使用 I/O 多路复用模块同时监听多个 FD（文件描述符），当 Accept、Read、Write 和 Close 事件产生时，操作系统就会回调 FD 绑定的事件处理器。
 
-
-
 这时候 Work 进程再去处理相应事件，而不是阻塞在某个请求连接上等待。
-
-
-
-
 
 这样就可以实现一个进程同时处理多个连接。每一个 Worker 进程通过 I/O 多路复用处理多个连接请求。
 
-
-
 为了减少进程切换（需要系统调用）的性能损耗，一般设置 Worker 进程数量和 CPU 数量一致。
-
-
 
 ⑤Nginx 和 Apache 的区别？
 
-
-
-
-
 轻量级，同样起 Web 服务，比 Apache 占用更少的内存及资源抗并发，Nginx 处理请求是异步非阻塞的，而 Apache 则是阻塞型的。
 
-
-
-在高并发下 Nginx 能保持低资源低消耗高性能高度模块化的设计，编写模块相对简单，最核心的区别在于 Apache 是同步多进程模型，一个连接对应一个进程；Nginx是异步的，多个连接（万级别）可以对应一个进程。
-
-
-
-
+在高并发下 Nginx 能保持低资源低消耗高性能高度模块化的设计，编写模块相对简单，最核心的区别在于 Apache 是同步多进程模型，一个连接对应一个进程；Nginx 是异步的，多个连接（万级别）可以对应一个进程。
 
 ⑥Nginx 的 Upstream 支持的负载均衡方式？
 
@@ -1423,10 +1063,6 @@ Nginx Work 进程使用 I/O 多路复用模块同时监听多个 FD（文件描�
 - **weight：**指定权重
 - **ip_hash：**每个请求按访问 ip 的 hash 结果分配，这样每个访客固定访问一个后端服务器
 - **第三方：**fair、url_hash
-
-
-
-
 
 ⑦Nginx 常见的优化配置有哪些?
 

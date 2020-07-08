@@ -3,10 +3,13 @@
 ### Debug: Cannot connect to runtime process, timeout after 10000 ms
 
 #### 参考链接
+
 > https://github.com/Microsoft/vscode/issues/72792
 
 #### 问题描述
-Vscode 在开启debug的时候报错如下
+
+Vscode 在开启 debug 的时候报错如下
+
 ```log
 Cannot connect to runtime process, timeout after 10000 ms - (reason: Cannot connect to the target: connect ECONNREFUSED 127.0.0.1:9229).
 ```
@@ -45,6 +48,7 @@ launch.json
 ```
 
 package.json
+
 ```js
 {
 	"scripts": {
@@ -52,8 +56,6 @@ package.json
   },
 }
 ```
-
-
 
 ### nest.js 的调试 launch.json
 

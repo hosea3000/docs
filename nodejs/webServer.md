@@ -1,6 +1,6 @@
-### 创建webSever
+### 创建 webSever
 
-Node.js创建Http服务器可以利用http包的createServer方法创建一个简单的web服务器
+Node.js 创建 Http 服务器可以利用 http 包的 createServer 方法创建一个简单的 web 服务器
 
 ```js
 const http = require('http');
@@ -15,6 +15,4 @@ const server = http.createServer((req, res) => {
 server.listen(3000, () => {
   console.log('http start, listen on port 3000');
 });
-
 ```
-
