@@ -141,3 +141,7 @@ try {
 ### TS 在不同文件中声明同名类会报错的问题
 
 默认情况下，当你在一个新的 TypeScript 文件中写下代码时，它处于全局命名空间中。要解决这个问题你应该在 TypeScript 文件的根级别位置含有 import 或者 export，它会在这个文件中创建一个本地的作用域。
+
+### node.js Stream
+
+使用 pipe 的形式可以避免 ReadStream 读数据过快 WriteStream 写入速度不够导致数据积压在内存中
