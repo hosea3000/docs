@@ -24,6 +24,7 @@
   - [Express](nodejs/express)
   - [V8 的内存限制与垃圾回收](nodejs/v8)
   - [自定义流](nodejs/stream)
+  - [多线程](nodejs/workThred)
 - Mysql
   - [什么是 MySQL?](mysql/index)
   - [MySQL 事务](mysql/index)
