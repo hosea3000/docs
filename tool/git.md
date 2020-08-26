@@ -1,29 +1,63 @@
-### 一台电脑如何使用多个 github 帐号
+## 基于 ssh key 的多账户切换
 
-1、`cd ～/.ssh` 在此目录下，执行`ssh-keygen -t rsa -C "luguicheng_private@163.com"` (注：第一个填写你要保存的路径，第二个填你的密码) 生成第一个 ssh key
-
-2、执行`ssh-keygen -t rsa -C "luguicheng_work@163.com"` (注：第一个填写你要保存的路径，第二个填你的密码) 生成第二个 ssh key
-
-3、执行这两个命令：`ssh-add ~/.ssh/id_rsa_lgc`，`ssh-add ~/.ssh/id_rsa_lgc` ,过程需要填写密码，填写刚刚步骤 1 的密码即可。
-
-- 可以使用`ssh-add -l`查看添加成功与否
-- `ssh-add -D`清除所有`ssh-add`添加的选项
-
-4、在 `~/.ssh`路径下的 config 文件配置好 Host, 在`~/.ssh`路径下执行 ls 查询是否有 config 文件，没有则执行 touch config 新建一个
+#### 生成 ssh key
 
 ```
-Host luguicheng.github.com
-     HostName github.com
-     PreferredAuthentications publickey
-     IdentityFile ~/.ssh/id_rsa_luguicheng
-
-Host lgc.github.com
-     HostName github.com
-     PreferredAuthentications publickey
-     IdentityFile ~/.ssh/id_rsa_lgc
-
+ssh-keygen -t rsa -C "841611653@qq.com"
 ```
 
-5、把刚刚生成的两个 ssh key 分别关联到两个 github 帐号中
+#### 添加 ssh key
 
-6、`ssh -T git@lgc.github.com`，`ssh -T git@luguicheng.github.com` 查询是否关联成功
+为 GitHub 添加 ssh key
+登录 GitHub 在账户 Settings > SSH and GPG keys > New SSH key > Add key 将之前生成的 ssh key 的 pub 文件中的内容粘贴进去，另一个账户也如法炮制。
+
+#### 为本机添加 ssh key
+
+```
+ssh-add ~/.ssh/id_rsa
+ssh-add ~/.ssh/id_rsa_work
+```
+
+#### 生成配置文件
+
+```
+touch ~/.ssh/config
+```
+
+写入内容
+
+```
+#Default GitHub
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa
+
+#Work GitHub
+Host github.com-work
+   HostName github.com
+   User git
+   IdentityFile ~/.ssh/id_rsa_work
+```
+
+#### 配置本地仓库
+
+对于本地已存在的仓库，查看远端
+
+```
+git remote -v
+```
+
+添加/更改远端
+
+```
+# 添加
+git remote add origin git@github.com-work:username/reponame.git
+
+# 修改
+git remote set-url origin git@github.com-work:username/reponame.git
+```
+
+或者直接修改 `.git/config` 文件中的 url
+
+### 最后刷新或者新开 iterm 页面就可以使用了

@@ -142,6 +142,38 @@ try {
 
 默认情况下，当你在一个新的 TypeScript 文件中写下代码时，它处于全局命名空间中。要解决这个问题你应该在 TypeScript 文件的根级别位置含有 import 或者 export，它会在这个文件中创建一个本地的作用域。
 
-### node.js Stream
+### Node.js Stream
 
-使用 pipe 的形式可以避免 ReadStream 读数据过快 WriteStream 写入速度不够导致数据积压在内存中
+1. 使用 pipe 的形式可以避免 ReadStream 读数据过快 WriteStream 写入速度不够导致数据积压在内存中
+2. stream 多次 pipe 的问题
+
+```js
+// streamA pipe streamB 之后分别 pipe 到 streamC 和 streamD
+
+// 这是错误写法, 会导致 streamD 的数据是两份重复的
+streamA.pipe(streamB).pipe(streamC);
+streamA.pipe(streamB).pipe(streamD);
+
+// 正确写法
+streamA.pipe(streamB).pipe(streamC);
+streamB.pipe(streamD);
+```
+
+### stream 没有监听 `error` 事件导致进程退出
+
+### error stack 丢失
+
+这种写法丢失了原 error 的 stack， 不方便查找问题
+
+```js
+try {
+} catch (err) {
+  this.logger.log(
+    { err, segmentId: segment.segmentId },
+    'SegmentService:getAudienceIds:err'
+  );
+  throw new InternalServerErrorException(err.toString());
+}
+```
+
+### `async-hooks` 可以很好解决 requestId 或者 trackId 的问题， 但是性能会有影响
