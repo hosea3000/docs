@@ -117,7 +117,6 @@ console.log(a); // { a:1, b:2 }
 ```
 
 ### findOneAndUpdate 返回的是更新之前的数据
-
     如果需要更新之后的数据 option: `{ new: true }`
 
 ### 捕获错误
