@@ -30,9 +30,12 @@
   - [MySQL 事务](mysql/index)
 - 数据库
   - [redis](database/redis)
+  - [Sequelize](database/sequelize)
+- MongoDB
   - [mongo](database/mongo)
   - [mongo 用户以及权限](mongo/auth)
-  - [Sequelize](database/sequelize)
+  - [mongo 数组操作](mongo/array)
+  - [mongo Aggregate](mongo/aggregate)
 - [Http](http/index)
   - [Restful 协议](http/restful)
   - [如何生成一个可靠的 cookie](http/cookie)
