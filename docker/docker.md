@@ -64,6 +64,9 @@ $ docker exec -it service_develop /bin/ash
 
 ```powershell
 $ docker rmi $(docker images | awk '/^<none>/ { print $3 }')
+
+// 新的方式
+$ docker image prune
 ```
 
 ### 查看未运行的容器
