@@ -1,4 +1,4 @@
-## 基于 ssh key 的多账户切换
+## 1. 基于 ssh key 的多账户切换
 
 #### 生成 ssh key
 
@@ -61,3 +61,8 @@ git remote set-url origin git@github.com-work:username/reponame.git
 或者直接修改 `.git/config` 文件中的 url
 
 ### 最后刷新或者新开 iterm 页面就可以使用了
+
+## 2. 替换 github 的 https 走 ssh
+```bash
+git config --global url."git@github.com:".insteadOf "https://github.com/"
+```
