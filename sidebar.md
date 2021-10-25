@@ -2,6 +2,8 @@
   - [重要问题](article/language)
   - [布隆过滤器](article/bloom-filter)
 - [踩过的坑](article/problem)
+- Golang
+  - [常见问题记录](go/go)
 - JavaScript
   - [手写 promise](javascript/promise)
   - [sort 方法的用法](javascript/sort)
