@@ -98,3 +98,25 @@ docker run -p 27017:27017 -v /home/<user>/data:/data/db
 ```powershell
 docker run -i -t -d --name redis-cluster-dev -p 6379:6379 -p 7000:7000 -p 7001:7001 -p 7002:7002 -p 7003:7003 -p 7004:7004 -p 7005:7005 -p 7006:7006 -p 7007:7007 grokzen/redis-cluster
 ```
+
+
+### 新装docker 遇到 permisioin denied
+
+```
+If you want to run docker as non-root user then you need to add it to the docker group.
+
+Create the docker group if it does not exist
+$ sudo groupadd docker
+
+Add your user to the docker group.
+$ sudo usermod -aG docker $USER
+
+Run the following command or Logout and login again and run (that doesn't work you may need to reboot your machine first)
+$ newgrp docker
+
+Check if docker can be run without root
+$ docker run hello-world
+
+Reboot if still got error
+$ reboot
+```
