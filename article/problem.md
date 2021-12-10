@@ -78,7 +78,7 @@ require 引入文件如果没有也会抛出错误
   ```js
   // 代码中加入
   global.gc();
-
+  
   // 启动时加入参数
   node --expose-gc index.js
   ```
