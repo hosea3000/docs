@@ -1,10 +1,7 @@
-
-
 ### 函数式选项模式
-
 配置参数可变， 如何设计让未来增加方便， 好维护
 
-```golang
+```go
 package main
 
 import (

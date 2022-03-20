@@ -48,4 +48,3 @@
 - [开篇词-这一次，让我们一起来搞懂 MySQL](/geektime/geektime_MySQL实战45讲/开篇词-这一次，让我们一起来搞懂MySQL.md)
 - [直播回顾-林晓斌：我的 MySQL 心路历程](/geektime/geektime_MySQL实战45讲/直播回顾-林晓斌：我的MySQL心路历程.md)
 - [结束语-点线网面，一起构建 MySQL 知识网络](/geektime/geektime_MySQL实战45讲/结束语-点线网面，一起构建MySQL知识网络.md)
-- [结课测试｜这些 MySQL 知识你都掌握了吗](/geektime/geektime_MySQL实战45讲/结课测试｜这些MySQL知识你都掌握了吗？.m)
