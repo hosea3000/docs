@@ -2,11 +2,9 @@
   - [重要问题](article/language)
   - [布隆过滤器](article/bloom-filter)
   - [踩过的坑](article/problem)
-- Golang
+- [Golang](go/index.md)
   - [常用](go/common.md)
   - [常见问题](go/常见问题.md)
-  - [可变参数](go/FunctionalOptions.md)
-  - [CAS操作](go/cas.md)
 - [JavaScript](/nodejs/index)
   - Node.js
     - [Node.js 版本](/nodejs/version)
