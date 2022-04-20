@@ -4,7 +4,7 @@ golang 没有枚举类型
 
 但是我们可以通过类型别名实现一个简单版本的 enmu 
 
-```golang
+```go
 package main
 
 import "fmt"
@@ -46,7 +46,7 @@ func main() {
 
 如果每次都要自己写类型的string实现很容易出错，也很麻烦。 官方提供了 stringer 专门用来做这个事情
 
-```golang
+```go
 package main
 
 import "fmt"
@@ -66,6 +66,10 @@ func main() {
 }
 ```
 
+执行命令 `go generate`会自动为你生成 pill_string.go 实现 string() 方法
 
 
-执行命令 `go generate`会自动为你生成 
+
+### 为什么 go 没有 enum 类型？
+
+golang 的数据类型都有零值。 假如我们写了一个枚举类型的值是 [1，2，3，4，5]  那么他的零值是多少呢？
