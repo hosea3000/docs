@@ -6,4 +6,5 @@
 - [并发操作CAS](go/cas.md)
 - [gennerate](go/generate.md)
 - [可变参数](go/FunctionalOptions.md)
+- [enum 枚举](go/enum.md)
 
