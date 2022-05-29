@@ -7,4 +7,5 @@
 - [gennerate](go/generate.md)
 - [可变参数](go/FunctionalOptions.md)
 - [enum 枚举](go/enum.md)
+- [垃圾回收](go/gc.md)
 
