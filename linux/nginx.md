@@ -1,6 +1,6 @@
 # nginx 
 
-
+> [一个不错的简单教程](https://mp.weixin.qq.com/s/jaS3AZYLrz7YzD93ONhvBw)
 
 ### 反向代理
 
