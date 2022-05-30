@@ -47,6 +47,7 @@
 - Linux
   - [常用命令](linux/command)
   - [新装服务器](linux/ubuntu)
+  - [Nginx](linux/nginx)
 - Docker
   - [Docker](docker/docker)
   - [Docker 安装 Mongodb](docker/mongodb)

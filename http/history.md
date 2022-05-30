@@ -26,3 +26,7 @@ HTTP 的最初版本，只有 GET 方法， 没有请求头和请求体
 ### HTTP/1.1
 
 1. 增加了长连接支持 `Connection： keep-alive` 但是一般会限制每个 host 的长连接数
+
+### HTTP/2.0
+
+1.
